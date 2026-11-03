@@ -62,3 +62,47 @@ mod tests {
     // TODO (student): write the remaining cases from your truth table before you
     // write next_state. At minimum: a live cell with 4 neighbors, a dead cell with 2.
 }
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn live_1_dies() {
+        assert_eq!(next_state(true, 1), false);
+    }
+
+    #[test]
+    fn live_2_survives() {
+        assert_eq!(next_state(true, 2), true);
+    }
+
+    #[test]
+    fn live_3_survives() {
+        assert_eq!(next_state(true, 3), true);
+    }
+
+    #[test]
+    fn dead_3_born() {
+        assert_eq!(next_state(false, 3), true);
+    }
+
+    #[test]
+    fn live_4_dies() {
+        assert_eq!(next_state(true, 4), false);
+    }
+
+    #[test]
+    fn dead_2_stays_dead() {
+        assert_eq!(next_state(false, 2), false);
+    }
+
+    #[test]
+    fn live_0_dies() {
+        assert_eq!(next_state(true, 0), false);
+    }
+
+    #[test]
+    fn live_8_dies() {
+        assert_eq!(next_state(true, 8), false);
+    }
+}
